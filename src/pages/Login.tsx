@@ -17,7 +17,7 @@ const iconsArray = [
       <img
         width={100}
         height={100}
-        src="https://images.pexels.com/photos/11035471/pexels-photo-11035471.jpeg"
+        src="https://img.icons8.com/?size=100&id=v0493lw60209&format=png&color=000000"
         alt="Icon 1"
         className="w-[30px] h-[30px] rounded-full object-cover"
       />
@@ -34,7 +34,7 @@ const iconsArray = [
       <img
         width={100}
         height={100}
-        src="https://images.pexels.com/photos/11035380/pexels-photo-11035380.jpeg"
+        src="https://img.icons8.com/?size=100&id=10289&format=png&color=000000"
         alt="Icon 2"
         className="w-[30px] h-[30px] rounded-full object-cover"
       />
@@ -43,6 +43,74 @@ const iconsArray = [
     duration: 20,
     delay: 10,
     radius: 100,
+    path: false,
+    reverse: false,
+  },
+  {
+    component: () => (
+      <img
+        width={100}
+        height={100}
+        src="https://img.icons8.com/?size=100&id=2Jv7M2wcxpBh&format=png&color=000000"
+        alt="Icon 4"
+        className="w-[30px] h-[30px] rounded-full object-cover"
+      />
+    ),
+    className: 'size-[30px] border-none bg-transparent',
+    duration: 20,
+    delay: 30,
+    radius: 100,
+    path: false,
+    reverse: false,
+  },
+  {
+    component: () => (
+      <img
+        width={100}
+        height={100}
+        src="https://img.icons8.com/?size=100&id=2Jv7M2wcxpBh&format=png&color=000000"
+        alt="Icon 5"
+        className="w-[30px] h-[30px] rounded-full object-cover"
+      />
+    ),
+    className: 'size-[30px] border-none bg-transparent',
+    duration: 50,
+    delay: 50,
+    radius: 75,
+    path: false,
+    reverse: false,
+  },
+  {
+    component: () => (
+      <img
+        width={100}
+        height={100}
+        src="https://img.icons8.com/?size=100&id=RrF4U2ogcU6A&format=png&color=000000"
+        alt="Icon 6"
+        className="w-[30px] h-[30px] rounded-full object-cover"
+      />
+    ),
+    className: 'size-[30px] border-none bg-transparent',
+    duration: 150,
+    delay: 70,
+    radius: 200,
+    path: false,
+    reverse: false,
+  },
+  {
+    component: () => (
+      <img
+        width={100}
+        height={100}
+        src="https://img.icons8.com/?size=100&id=hjLvy3uou8Av&format=png&color=000000"
+        alt="Icon 7"
+        className="w-[30px] h-[30px] rounded-full object-cover"
+      />
+    ),
+    className: 'size-[30px] border-none bg-transparent',
+    duration: 10,
+    delay: 90,
+    radius: 150,
     path: false,
     reverse: false,
   },
