@@ -1,0 +1,61 @@
+
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: whatsapp-ai-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: adminpassword
+      POSTGRES_DB: whatsapp_ai_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: whatsapp-ai-pgadmin
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@example.com
+      PGADMIN_DEFAULT_PASSWORD: adminpassword
+    ports:
+      - "8080:80"
+    depends_on:
+      - postgres
+
+  adminer:
+    image: adminer
+    container_name: whatsapp-ai-adminer
+    restart: always
+    ports:
+      - "8081:8080"
+
+  backend:
+    build: ./server
+    container_name: whatsapp-ai-backend
+    restart: always
+    ports:
+      - "4000:4000"
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_USER: admin
+      DB_PASSWORD: adminpassword
+      DB_NAME: whatsapp_ai_db
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./server:/app
+#      - node_modules:/app/node_modules
+
+volumes:
+  postgres-data:
