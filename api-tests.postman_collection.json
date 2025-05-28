@@ -1,0 +1,154 @@
+{
+  "info": {
+    "name": "WhatsApp AI Integration Platform API Tests",
+    "_postman_id": "12345678-abcd-efgh-ijkl-1234567890ab",
+    "description": "API tests for create-account and login endpoints",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create Account - Success",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"email\":\"testuser@example.com\",\"password\":\"password123\"}"
+        },
+        "url": {
+          "raw": "http://localhost:4000/api/create-account",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4000",
+          "path": ["api", "create-account"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create Account - Duplicate Email",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"email\":\"testuser@example.com\",\"password\":\"password123\"}"
+        },
+        "url": {
+          "raw": "http://localhost:4000/api/create-account",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4000",
+          "path": ["api", "create-account"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create Account - Missing Fields",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"email\":\"\",\"password\":\"\"}"
+        },
+        "url": {
+          "raw": "http://localhost:4000/api/create-account",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4000",
+          "path": ["api", "create-account"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Login - Success",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"email\":\"testuser@example.com\",\"password\":\"password123\"}"
+        },
+        "url": {
+          "raw": "http://localhost:4000/api/login",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4000",
+          "path": ["api", "login"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Login - Invalid Credentials",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"email\":\"testuser@example.com\",\"password\":\"wrongpassword\"}"
+        },
+        "url": {
+          "raw": "http://localhost:4000/api/login",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4000",
+          "path": ["api", "login"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Login - Missing Fields",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"email\":\"\",\"password\":\"\"}"
+        },
+        "url": {
+          "raw": "http://localhost:4000/api/login",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4000",
+          "path": ["api", "login"]
+        }
+      },
+      "response": []
+    }
+  ]
+}

@@ -71,10 +71,31 @@ const CreateAccount = () => {
       setConfirmPasswordError('Passwords do not match.');
       return;
     }
-    // TODO: Add actual account creation logic here, including payment processing
-    console.log('Account created', formData);
-    alert('Account created successfully!');
-    navigate('/login');
+    try {
+      const response = await fetch('http://localhost:4000/api/create-account', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          password: formData.password,
+        }),
+      });
+      if (response.ok) {
+        alert('Account created successfully!');
+        navigate('/login');
+      } else {
+        const data = await response.json();
+        alert('Error: ' + (data.error || 'Failed to create account'));
+      }
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        alert('Error: ' + error.message);
+      } else {
+        alert('An unknown error occurred');
+      }
+    }
   };
 
   return (

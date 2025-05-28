@@ -156,10 +156,31 @@ const Login: React.FC<LoginProps> = ({ setIsAuthenticated }) => {
       setEmailError('Please enter a valid email address.');
       return;
     }
-    console.log('Form submitted', formData);
-    // TODO: Add actual authentication logic here
-    setIsAuthenticated(true);
-    navigate('/dashboard');
+    try {
+      const response = await fetch('http://localhost:4000/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          password: formData.password,
+        }),
+      });
+      if (response.ok) {
+        setIsAuthenticated(true);
+        navigate('/dashboard');
+      } else {
+        const data = await response.json();
+        alert('Error: ' + (data.error || 'Login failed'));
+      }
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        alert('Error: ' + error.message);
+      } else {
+        alert('An unknown error occurred');
+      }
+    }
   };
 
   const handleResetPassword = async (event: FormEvent<HTMLFormElement>) => {
