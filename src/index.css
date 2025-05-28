@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+   :root {
+    --background: hsl(0, 0%, 100%);
+    --foreground: hsl(0, 0%, 0%);
+    --skeleton: hsl(0, 0%, 90%);
+    --border: hsl(220, 20%, 90%);
+    --btn-border: hsl(214deg, 31.8%, 91.4%);
+    --input: hsl(220, 20%, 90%);
+    
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: hsl(222, 94%, 5%);
+    --foreground: hsl(0, 0%, 100%);
+    --skeleton: hsl(218, 36%, 16%);
+    --border: hsl(220, 20%, 90%);
+    --btn-border: hsl(217deg, 32.6%, 17.5%);
+    --input: hsl(219, 63%, 16%);
+    
+    --radius: 0.5rem;
+  }
+
+ body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .g-button {
+    @apply rounded-[var(--radius)] border;
+    border-color: var(--btn-border)
+  }
+
+  .animate-ripple {
+    animation: ripple 1.5s linear infinite;
+  }
+
+  @keyframes ripple {
+    0% {
+      transform: scale(0.8);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(2.4);
+      opacity: 0;
+    }
+  }
+
+  @keyframes orbit {
+    from {
+      transform: rotate(0deg) translateX(120px) rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg) translateX(120px) rotate(-360deg);
+    }
+  }
+}
