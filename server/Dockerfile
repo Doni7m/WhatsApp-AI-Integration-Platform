@@ -1,26 +1,23 @@
-# Usa a imagem oficial do Node.js
+# Usa imagem oficial do Node.js
 FROM node:18
 
-# Define o diretório de trabalho dentro do container
+# Define diretório de trabalho dentro do container
 WORKDIR /app
 
-# Copia apenas os arquivos de dependências para cache de build
+# Copia arquivos de dependência
 COPY package*.json ./
 
-# Instala as dependências
+# Instala todas as dependências
 RUN npm install
 
-# Copia todo o restante do código para dentro do container
+# Copia todo o restante do código
 COPY . .
 
-# Torna o entrypoint.sh executável
+# Permite execução do entrypoint
 RUN chmod +x /app/entrypoint.sh
 
-# Expõe a porta 4000
+# Expõe a porta que o backend usa
 EXPOSE 4000
 
-# Define o script de entrada
+# Inicia o servidor
 ENTRYPOINT ["/app/entrypoint.sh"]
-
-# Comando padrão para rodar o servidor
-CMD ["npm", "start"]
